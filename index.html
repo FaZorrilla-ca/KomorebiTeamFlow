@@ -674,6 +674,7 @@ body {
       </form>
       <div class="auth-divider">✦ ✦ ✦</div>
       <button class="btn-link-sm" onclick="showAuthScreen('invite')">I have an invite code →</button>
+      <button class="btn-link-sm" onclick="showAuthScreen('setup')">Create a new project →</button>
     </div>
   </div>
 </div>
@@ -1879,14 +1880,14 @@ function init() {
     }
 
     inviteStep = 1;
-    showAuthScreen(state.users.length === 0 ? 'setup' : 'login');
+    showAuthScreen('login');
 
   }).catch(err => {
     document.getElementById('screen-loading').style.display = 'none';
     console.error('Firebase init error:', err);
-    // Graceful fallback: still show the app
+    // Graceful fallback: still show auth landing
     inviteStep = 1;
-    showAuthScreen(state.users.length === 0 ? 'setup' : 'login');
+    showAuthScreen('login');
   });
 }
 
